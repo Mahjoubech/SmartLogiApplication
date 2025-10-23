@@ -17,7 +17,7 @@
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="io.github.Mahjoubech.smartLogi.entity"/>
+        <property name="packagesToScan" value="io.github.Mahjoubech.smartlogi.entity"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
@@ -35,7 +35,7 @@
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <jpa:repositories base-package="io.github.Mahjoubech.smartLogi.dao"
+    <jpa:repositories base-package="io.github.Mahjoubech.smartlogi.dao"
                       entity-manager-factory-ref="entityManagerFactory"/>
 
 </beans>

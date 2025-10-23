@@ -1,4 +1,4 @@
-package io.github.Mahjoubech.smartLogi;
+package io.github.Mahjoubech.smartlogi;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
