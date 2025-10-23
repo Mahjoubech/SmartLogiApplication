@@ -37,4 +37,21 @@
     <jpa:repositories base-package="io.github.Mahjoubech.smartlogi.dao"
                       entity-manager-factory-ref="entityManagerFactory"/>
 
-</beans>
+    <bean id="livreurServiceTarget"
+          class="io.github.Mahjoubech.smartlogi.service.LivreurServiceImp"
+          scope="singleton">
+        <constructor-arg ref="livreurDao"/>
+    </bean>
+
+    <bean id="livreurService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="livreurServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="create">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    </beans>
