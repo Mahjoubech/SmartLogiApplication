@@ -1,4 +1,6 @@
 package io.github.Mahjoubech.smartlogi.dao;
 
-public class LivreurDao {
+import io.github.Mahjoubech.smartlogi.entity.Livreur;
+
+public interface LivreurDao extends Crud<Livreur>{
 }
