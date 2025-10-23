@@ -36,15 +36,27 @@
       </dependency>
 
       <dependency>
-          <groupId>org.hibernate</groupId>
+          <groupId>org.hibernate.orm</groupId>
           <artifactId>hibernate-core</artifactId>
-          <version>6.4.1.Final</version> <type>pom</type>
-      </dependency>
+          <version>6.4.4.Final</version> </dependency>
 
       <dependency>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-engine</artifactId>
           <version>5.10.1</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-api</artifactId>
+          <version>5.9.3</version>
+          <scope>test</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-engine</artifactId>
+          <version>5.9.3</version>
           <scope>test</scope>
       </dependency>
   </dependencies>
