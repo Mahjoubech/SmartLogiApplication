@@ -21,5 +21,10 @@ public class LivreurController {
         this.livreurService = livreurService;
     }
 
+    @PostMapping
+    public ResponseEntity<Livreur> createLivreur(@RequestBody LivreurDto dto) {
+        Livreur newLivreur = livreurService.createLivreur(dto);
+        return new ResponseEntity<>(newLivreur, HttpStatus.CREATED);
+    }
 
 }
