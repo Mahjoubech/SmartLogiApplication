@@ -54,7 +54,11 @@ public class LivreurController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
+    @ExceptionHandler(LivreurNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleNotFoundException(LivreurNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
     @GetMapping("/telephone/{telephone}")
     public ResponseEntity<Livreur> getLivreurByTelephone(@PathVariable String telephone){
