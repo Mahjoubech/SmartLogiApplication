@@ -42,6 +42,18 @@ public class LivreurController {
                 });
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Livreur> updateLivreur(@PathVariable Long id, @RequestBody LivreurDto dto) {
+        Livreur updatedLivreur = livreurService.updateLivreur(id, dto);
+        return ResponseEntity.ok(updatedLivreur);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLivreur(@PathVariable Long id) {
+        livreurService.deleteLivreur(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 
     @GetMapping("/telephone/{telephone}")
