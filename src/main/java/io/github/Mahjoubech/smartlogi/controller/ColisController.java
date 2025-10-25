@@ -3,6 +3,8 @@ package io.github.Mahjoubech.smartlogi.controller;
 import io.github.Mahjoubech.smartlogi.dto.ColisDto;
 import io.github.Mahjoubech.smartlogi.entity.Colis;
 import io.github.Mahjoubech.smartlogi.enums.StatutColis;
+import io.github.Mahjoubech.smartlogi.exception.ColisNotFondException;
+import io.github.Mahjoubech.smartlogi.exception.LivreurNotFoundException;
 import io.github.Mahjoubech.smartlogi.service.ColisService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,5 +59,10 @@ public class ColisController {
        }catch (Exception e) {
            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
        }
+    }
+    @ExceptionHandler(ColisNotFondException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleNotFoundException(ColisNotFondException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
