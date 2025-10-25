@@ -1,5 +1,6 @@
 package io.github.Mahjoubech.smartlogi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -24,7 +25,8 @@ public class Livreur {
     @Column(name = "telephone", unique = true)
     private String telephone;
 
-    @OneToMany(mappedBy = "livreur", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // 🛑 FIX 2: Changed FETCH type to LAZY for better performance
+    @OneToMany(mappedBy = "livreur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Colis> colisList = new ArrayList<>();
 
 

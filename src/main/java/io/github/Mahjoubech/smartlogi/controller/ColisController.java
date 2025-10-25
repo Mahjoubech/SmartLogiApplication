@@ -4,6 +4,7 @@ import io.github.Mahjoubech.smartlogi.dto.ColisDto;
 import io.github.Mahjoubech.smartlogi.entity.Colis;
 import io.github.Mahjoubech.smartlogi.enums.StatutColis;
 import io.github.Mahjoubech.smartlogi.service.ColisService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,5 +41,19 @@ public class ColisController {
     public ResponseEntity<Iterable<Colis>> getAllColis() {
         Iterable<Colis> colisList = colisService.getAllColis();
         return ResponseEntity.ok(colisList);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteColis(@PathVariable Long id) {
+        colisService.deleteColis(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/livreur/{livreurId}")
+    public ResponseEntity<Iterable<Colis>> getColisByLivreurId(@PathVariable Long livreurId) {
+       try{
+           Iterable<Colis> colisList = colisService.getColisByLivreurId(livreurId);
+           return ResponseEntity.ok(colisList);
+       }catch (Exception e) {
+           return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+       }
     }
 }
