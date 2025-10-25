@@ -1,7 +1,3 @@
-بالتأكيد\! إليك ملف `README.md` كامل ومنظم باللغة الفرنسية، مُكيَّف خصيصًا لمشروعك **Smart Delivery Management System** (gestion Livreur/Colis) ويشمل جميع أقسام الـ Configuration و الـ Bonus (API REST) التي قمنا بتنفيذها.
-
------
-
 # 🚚 Smart Delivery Management System – Système de Gestion des Livraisons
 
 ### Modernisez la logistique des colis avec une application Spring 6/JPA centralisée et une API REST performante.
@@ -108,7 +104,6 @@ Pour lancer le serveur et tester les endpoints avec Postman:
 
 ### 📊 Diagramme UML des Classes
 ![DIAGRAM CLASS Screenshot](docs/diagramClass.png)
-*Ajoutez ici votre diagramme UML des classes (Livreur, Colis, DAO, Service).*
 
 ### 📋 Suivi de Projet (JIRA/Trello)
 
