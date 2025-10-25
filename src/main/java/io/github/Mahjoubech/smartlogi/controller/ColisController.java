@@ -42,11 +42,13 @@ public class ColisController {
         Iterable<Colis> colisList = colisService.getAllColis();
         return ResponseEntity.ok(colisList);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteColis(@PathVariable Long id) {
         colisService.deleteColis(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     @GetMapping("/livreur/{livreurId}")
     public ResponseEntity<Iterable<Colis>> getColisByLivreurId(@PathVariable Long livreurId) {
        try{
