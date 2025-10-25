@@ -1,5 +1,6 @@
 package io.github.Mahjoubech.smartlogi.service.impl;
 
+import io.github.Mahjoubech.smartlogi.enums.StatutColis;
 import io.github.Mahjoubech.smartlogi.repository.ColisRepository;
 import io.github.Mahjoubech.smartlogi.repository.LivreurRepository;
 import io.github.Mahjoubech.smartlogi.dto.ColisDto;
@@ -44,7 +45,6 @@ public class ColisServiceImpl implements ColisService {
                         .orElseThrow(() -> new LivreurNotFoundException("Nouveau Livreur non trouvé avec ID: " + colisDto.getLivreur().getId()));
                 colis.setLivreur(nouveauLivreur);
             }
-
             colis.setDestinataire(colisDto.getDestinataire());
             colis.setAdresse(colisDto.getAdresse());
             colis.setPoids(colisDto.getPoids());
@@ -79,5 +79,12 @@ public class ColisServiceImpl implements ColisService {
     @Override
     public List<Colis> getColisByLivreurId(Long livreurId){
         return colisRepository.findByLivreurId(livreurId);
+    }
+    @Override
+    public Colis updateColisStatus(Long id,StatutColis stat){
+        Colis colis = colisRepository.findById(id)
+                .orElseThrow(() -> new LivreurNotFoundException("Colis non trouvé avec ID: " + id));
+        colis.setStatut(stat);
+        return colisRepository.save(colis);
     }
 }

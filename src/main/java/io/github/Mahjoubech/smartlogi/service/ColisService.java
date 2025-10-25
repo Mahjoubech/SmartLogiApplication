@@ -4,6 +4,7 @@ import io.github.Mahjoubech.smartlogi.dto.ColisDto;
 import io.github.Mahjoubech.smartlogi.dto.LivreurDto;
 import io.github.Mahjoubech.smartlogi.entity.Colis;
 import io.github.Mahjoubech.smartlogi.entity.Livreur;
+import io.github.Mahjoubech.smartlogi.enums.StatutColis;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,4 +16,6 @@ public interface ColisService {
     Colis updateColis(Long id, ColisDto colisDto);
     void deleteColis(Long id);
     List<Colis> getColisByLivreurId(Long livreurId);
+    Colis updateColisStatus(Long id, StatutColis stat);
+
 }

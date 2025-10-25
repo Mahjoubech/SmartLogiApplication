@@ -2,12 +2,10 @@ package io.github.Mahjoubech.smartlogi.controller;
 
 import io.github.Mahjoubech.smartlogi.dto.ColisDto;
 import io.github.Mahjoubech.smartlogi.entity.Colis;
+import io.github.Mahjoubech.smartlogi.enums.StatutColis;
 import io.github.Mahjoubech.smartlogi.service.ColisService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/c1/colis")
@@ -17,8 +15,18 @@ public class ColisController {
         this.colisService = colisService;
     }
     @PostMapping
-    public ResponseEntity<Colis> enregistrerEtAssigner(@RequestBody ColisDto colisDto){
-        Colis colisEnregistre= colisService.createColis(colisDto);
+    public ResponseEntity<Colis> enregistrerEtAssigner( @RequestBody ColisDto colisDto){
+        Colis colisEnregistre= colisService.createColis( colisDto);
         return ResponseEntity.ok(colisEnregistre);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Colis> updateColis(@PathVariable Long id ,@RequestBody ColisDto colisDto){
+        Colis colisUpdate= colisService.updateColis(id,colisDto);
+        return ResponseEntity.ok(colisUpdate);
+    }
+    @PutMapping("/{id}/status?status={NEW_STATUS}")
+    public ResponseEntity<Colis> updateColisStatus(@PathVariable Long id , @RequestParam StatutColis status) {
+        Colis colisUpdateStatus = colisService.updateColisStatus(id, status);
+        return ResponseEntity.ok(colisUpdateStatus);
     }
 }
