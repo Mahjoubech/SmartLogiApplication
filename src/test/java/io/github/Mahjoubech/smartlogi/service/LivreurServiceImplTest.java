@@ -20,7 +20,7 @@
 //        livreurService = (LivreurService) context.getBean("livreurService");
 //    }
 //
-//    @AfterAll // ✅ التصحيح 1: إغلاق الـ Context بعد انتهاء جميع الاختبارات
+//    @AfterAll
 //    static void tearDown() {
 //        if (context instanceof ClassPathXmlApplicationContext) {
 //            ((ClassPathXmlApplicationContext) context).close();
@@ -43,7 +43,6 @@
 //        Assertions.assertTrue(found.isPresent(), "Le livreur doit être trouvé.");
 //        Assertions.assertEquals("Karim", found.get().getPrenom());
 //
-//        // ✅ التصحيح 2: تنظيف البيانات المضافة
 //        livreurService.delete(savedLivreur.getId());
 //    }
 //}

@@ -57,7 +57,6 @@ public class Colis {
                 ", adresse='" + adresse + '\'' +
                 ", poids=" + poids +
                 ", statut=" + statut +
-                // Use getName() and getPrenom() to safely display Livreur info
                 ", livreur=" + (livreur != null ? livreur.getNom() + ' ' + livreur.getPrenom() : null) +
                 '}';
     }

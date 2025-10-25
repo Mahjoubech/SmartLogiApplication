@@ -29,4 +29,14 @@ public class ColisController {
         Colis colisUpdateStatus = colisService.updateColisStatus(id, status);
         return ResponseEntity.ok(colisUpdateStatus);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Colis> getColisById(@PathVariable Long id) {
+        Colis colis = colisService.getColisById(id).orElse(null);
+        return ResponseEntity.ok(colis);
+    }
+    @GetMapping
+    public ResponseEntity<Iterable<Colis>> getAllColis() {
+        Iterable<Colis> colisList = colisService.getAllColis();
+        return ResponseEntity.ok(colisList);
+    }
 }
