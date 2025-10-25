@@ -2,9 +2,11 @@ package io.github.Mahjoubech.smartlogi.entity;
 
 import jakarta.persistence.*;
 
-@Entity
+import java.util.ArrayList;
+import java.util.List;
 
-@Table(name = "livreurs" )
+@Entity
+@Table(name = "livreur")
 public class Livreur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,14 +23,22 @@ public class Livreur {
 
     @Column(name = "telephone", unique = true)
     private String telephone;
+
+    @OneToMany(mappedBy = "livreur", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // 🛑 FIX 2: Changed FETCH type to LAZY for better performance
+    private List<Colis> colisList = new ArrayList<>();
+
+
     public Livreur() {}
+
     public Livreur(String nom, String prenom, String vehicule, String telephone) {
         this.nom = nom;
         this.prenom = prenom;
         this.vehicule = vehicule;
         this.telephone = telephone;
     }
-    //getters
+
+
+    // Getters
     public Long getId() {
         return id;
     }
@@ -44,7 +54,10 @@ public class Livreur {
     public String getTelephone() {
         return telephone;
     }
-    //setters
+    public List<Colis> getColisList() {
+        return colisList;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -60,6 +73,16 @@ public class Livreur {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+    public void setColisList(List<Colis> colisList) {
+        this.colisList = colisList;
+    }
+
+    public void addColis(Colis colis) {
+        colisList.add(colis);
+        colis.setLivreur(this);
+    }
+
+
     @Override
     public String toString() {
         return "Livreur{" +
@@ -70,6 +93,4 @@ public class Livreur {
                 ", telephone='" + telephone + '\'' +
                 '}';
     }
-
-
 }

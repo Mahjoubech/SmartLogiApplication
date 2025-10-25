@@ -58,17 +58,15 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     <!-- Service Beans -->
-    <bean id="livreurService" class="io.github.Mahjoubech.smartlogi.service.impl.LivreurServiceImpl">
+    <bean id="livreurService" class="io.github.Mahjoubech.smartlogi.service.impl.LivreurServiceImpl" scope="singleton">
         <constructor-arg ref="livreurRepository" />
     </bean>
-    <bean id="colisService" class="io.github.Mahjoubech.smartlogi.service.impl.ColisServiceImpl">
+    <bean id="colisService" class="io.github.Mahjoubech.smartlogi.service.impl.ColisServiceImpl" scope="singleton">
+        <constructor-arg ref="livreurRepository"/>
         <constructor-arg ref="colisRepository" />
     </bean>
 
-<!--    <bean id="colisService" class="com.smartlogi.sevice.impl.ColisServiceImpl">-->
-<!--        <property name="livreurRepository" ref="livreurRepository"/>-->
-<!--        <property name="colisRepository" ref="colisRepository" />-->
-<!--    </bean>-->
+
 </beans>
 
 

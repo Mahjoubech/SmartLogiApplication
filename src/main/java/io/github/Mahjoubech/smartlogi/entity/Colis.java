@@ -1,8 +1,11 @@
 package io.github.Mahjoubech.smartlogi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.Mahjoubech.smartlogi.enums.StatutColis;
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "colis")
 public class Colis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +23,13 @@ public class Colis {
     @Enumerated(EnumType.STRING)
     @Column(name = "statut", nullable = false)
     private StatutColis statut = StatutColis.PREPARATION;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "livreur_id")
+    @JsonIgnore
     private Livreur livreur;
-
     public Colis() {}
+
     public Colis(String destinataire, String adresse, Double poids, StatutColis statut, Livreur livreur) {
         this.destinataire = destinataire;
         this.adresse = adresse;
@@ -32,54 +37,18 @@ public class Colis {
         this.statut = statut;
         this.livreur = livreur;
     }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDestinataire() {
-        return destinataire;
-    }
-
-    public void setDestinataire(String destinataire) {
-        this.destinataire = destinataire;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public Double getPoids() {
-        return poids;
-    }
-
-    public void setPoids(Double poids) {
-        this.poids = poids;
-    }
-
-    public StatutColis getStatut() {
-        return statut;
-    }
-
-    public void setStatut(StatutColis statut) {
-        this.statut = statut;
-    }
-
-    public Livreur getLivreur() {
-        return livreur;
-    }
-
-    public void setLivreur(Livreur livreur) {
-        this.livreur = livreur;
-    }
-
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getDestinataire() { return destinataire; }
+    public void setDestinataire(String destinataire) { this.destinataire = destinataire; }
+    public String getAdresse() { return adresse; }
+    public void setAdresse(String adresse) { this.adresse = adresse; }
+    public Double getPoids() { return poids; }
+    public void setPoids(Double poids) { this.poids = poids; }
+    public StatutColis getStatut() { return statut; }
+    public void setStatut(StatutColis statut) { this.statut = statut; }
+    public Livreur getLivreur() { return livreur; }
+    public void setLivreur(Livreur livreur) { this.livreur = livreur; }
     @Override
     public String toString() {
         return "Colis{" +
@@ -88,6 +57,7 @@ public class Colis {
                 ", adresse='" + adresse + '\'' +
                 ", poids=" + poids +
                 ", statut=" + statut +
+                // Use getName() and getPrenom() to safely display Livreur info
                 ", livreur=" + (livreur != null ? livreur.getNom() + ' ' + livreur.getPrenom() : null) +
                 '}';
     }
