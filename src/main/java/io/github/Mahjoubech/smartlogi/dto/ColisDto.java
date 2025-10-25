@@ -1,16 +1,21 @@
 package io.github.Mahjoubech.smartlogi.dto;
 
+import io.github.Mahjoubech.smartlogi.entity.Livreur;
+import io.github.Mahjoubech.smartlogi.enums.StatutColis;
+
 public class ColisDto {
     private String destinataire;
     private String adresse;
     private Double poids;
-    private Long livreurId;
+    private Livreur livreur;
+    private StatutColis statutColis;
     public ColisDto() {}
-    public ColisDto(String destinataire, String adresse, Double poids, Long livreurId) {
+    public ColisDto(String destinataire, String adresse, Double poids,StatutColis statutColis, Livreur livreur) {
         this.destinataire = destinataire;
         this.adresse = adresse;
         this.poids = poids;
-        this.livreurId = livreurId;
+        this.statutColis=statutColis;
+        this.livreur = livreur;
     }
     public String getDestinataire() { return destinataire; }
     public void setDestinataire(String destinataire) { this.destinataire = destinataire; }
@@ -20,7 +25,13 @@ public class ColisDto {
 
     public Double getPoids() { return poids; }
     public void setPoids(Double poids) { this.poids = poids; }
+    public StatutColis getStatutColis() { return statutColis; }
+    public void setStatutColis(StatutColis statutColis) { this.statutColis = statutColis; }
+    public Livreur getLivreur() {
+        return livreur;
+    }
 
-    public Long getLivreurId() { return livreurId; }
-    public void setLivreurId(Long livreurId) { this.livreurId = livreurId; }
+    public void setLivreur(Livreur livreur) {
+        this.livreur = livreur;
+    }
 }
